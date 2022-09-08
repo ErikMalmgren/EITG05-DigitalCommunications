@@ -11,6 +11,7 @@ b(50) = 0; % Padding signal
 %% 4-PAM
 Apam = [-3 -1 1 3];
 x = linspace(0,1);
+sumAreaPam = 0;
 for i = 1:49
     bstr = strcat(b(i), b(i+1));
     sig = bin2dec(bstr); %Choose signal from Apam alternatives
@@ -18,6 +19,7 @@ for i = 1:49
     hold on
     x = x + 1;
     i = i + 1;
+    sumAreaPam = sumAreaPam + trapz(x, Apam(sig + 1)*grc);
 end
 
 %% 4-PSK
@@ -59,5 +61,6 @@ end
 
 
 %% b
+% Average symbol energy should be integral / 50
 
 
