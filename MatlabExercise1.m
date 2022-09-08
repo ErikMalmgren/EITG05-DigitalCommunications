@@ -48,16 +48,20 @@ end
 
 Apam = [-3 -1 1 3];
 x = linspace(0,1);
-for i = 1:24
+for i = 1:47
     bstr1 = strcat(b(i), b(i+1));
     sig1 = bin2dec(bstr1); %Choose signal from Apam alternatives
-    bstr2 = strcat(b(i+25), b(i+26));
+    bstr2 = strcat(b(i+2), b(i+3));
     sig2 = bin2dec(bstr2);
     plot(x, Apam(sig1 + 1)*grc + Apam(sig2 + 1)*grc, 'blue')
     hold on
     x = x + 1;
     i = i + 1;
 end
+
+%% 4-FSK
+
+
 
 
 %% b
