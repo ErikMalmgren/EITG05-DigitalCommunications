@@ -17,7 +17,7 @@ for i = 1:49
     sig = bin2dec(bstr); %Choose signal from Apam alternatives
     plot(x, Apam(sig + 1)*grc, 'blue')
     hold on
-    sumAreaPam = abs(sumAreaPam + trapz(x, Apam(sig + 1)*grc));
+    sumAreaPam = sumAreaPam + abs(trapz(x, Apam(sig + 1)*grc));
     x = x + 1;
     i = i + 1;
 end
@@ -38,7 +38,7 @@ for i = 1:49
     
     plot(x, grc * signals1(sig + 1), 'blue')
     hold on
-    sumAreaPsk = abs(sumAreaPsk + trapz(x, grc * signals1(sig + 1)));
+    sumAreaPsk = sumAreaPsk + abs(trapz(x, grc * signals1(sig + 1)));
     x = x + 1;
     i = i + 1;
 end
@@ -57,13 +57,14 @@ for i = 1:47
     plot(x, Apam(sig1 + 1)*grc + Apam(sig2 + 1)*grc, 'blue')
     hold on
     
-    sumAreaQam = abs(sumAreaQam + trapz(x, Apam(sig1 + 1)*grc + Apam(sig2 + 1)*grc));
+    sumAreaQam = sumAreaQam + abs(trapz(x, Apam(sig1 + 1)*grc + Apam(sig2 + 1)*grc));
     x = x + 1;
     i = i + 1;
 end
 
 %% 4-FSK
 x = linspace(0,1);
+xh = linspace(0,0.5);
 sumAreaFsk = 0;
 
 for i = 1:49
@@ -72,7 +73,7 @@ for i = 1:49
     plot(x, cos(2*pi*x*sig), 'blue')
     hold on
     
-    sumAreaFsk = abs(sumAreaFsk + trapz(x, cos(2*pi*x*sig)));
+    sumAreaFsk = sumAreaFsk + abs(trapz(xh, cos(2*pi*xh*sig))) + abs(trapz(xh, cos(2*pi*xh*sig)));
     x = x + 1;
     i = i + 1;
     
